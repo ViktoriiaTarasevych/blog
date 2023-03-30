@@ -18,5 +18,4 @@ public class MainController {
         model.addAttribute("title", "Блог");
         return "blog-main";
     }
-
 }
