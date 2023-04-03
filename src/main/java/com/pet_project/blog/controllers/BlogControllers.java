@@ -73,4 +73,10 @@ public class BlogControllers {
         postRepository.save(post);
         return "redirect:/blog";
     }
+    @PostMapping("/blog/{id}/remove") // додавання поста
+    public String blogPostDelete(@PathVariable(value = "id") Long id, Model model) {
+        Post post = postRepository.findById(id).orElseThrow();
+        postRepository.delete(post);
+        return "redirect:/blog";
+    }
 }

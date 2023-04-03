@@ -25,8 +25,11 @@
         <h1 th:text="${element.title}"></h1>
         <p th:text="${element.full_text}"></p>
         <p><b>&#128065;</b> <span  th:text="${element.views}"/></p>
-        <a th:href="'/blog/' + ${element.id} + '/edit'" class="btn btn-primary"> Edit </a>
-        <a th:href="'/blog/' + ${element.id} + '/remove'" class="btn btn-primary"> Delete </a>
+        <a th:href="'/blog/' + ${element.id} + '/edit'" class="btn btn-primary"> Edit </a><br><br>
+        <form th:action="'/blog/' + ${element.id} + '/remove'" method="post">
+            <button class="btn btn-primary" type="submit"> Delete </button>
+        </form>
+
         <hr>
     </div>
 </div>
