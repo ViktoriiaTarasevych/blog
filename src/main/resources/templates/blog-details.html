@@ -7,7 +7,6 @@
 </head>
 <body>
 <header th:insert="blocks/header::header"></header>
-
 <div class="container mt-5">
     <div th:each="element:${post}" class="alert alert-into mt-2">
         <h1 th:text="${element.title}"></h1>
@@ -17,12 +16,8 @@
         <form th:action="'/blog/' + ${element.id} + '/remove'" method="post">
             <button class="btn btn-primary" type="submit"> Delete </button>
         </form>
-
         <hr>
     </div>
 </div>
-
-<footer class="blog-footer">
-    <p class="mt-5 mb-3 text-muted" style="text-align:center">&copy; 2023 </p>
-</footer>
+<footer th:insert="blocks/footer::footer"></footer>
 </body>

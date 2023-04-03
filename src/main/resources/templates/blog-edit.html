@@ -7,7 +7,6 @@
 </head>
 <body>
 <header th:insert="blocks/header::header"></header>
-
 <div class="container mt-5 mb-5">
     <h1>Edit post</h1>
     <div th:each = "element:${post}">
@@ -19,8 +18,5 @@
         </form>
     </div>
 </div>
-
-<footer class="blog-footer">
-    <p class="mt-5 mb-3 text-muted" style="text-align:center">&copy; 2023 </p>
-</footer>
+<footer th:insert="blocks/footer::footer"></footer>
 </body>

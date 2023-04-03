@@ -7,7 +7,6 @@
 </head>
 <body>
 <header th:insert="blocks/header::header"></header>
-
 <div class="container mt-5 mb-5">
     <h1>Add post</h1>
     <form action="blog-add" method="post">
@@ -16,10 +15,6 @@
         <textarea name="full_text" placeholder="Post" class="form-control"></textarea><br>
         <button type="submit" class=" btn btn-primary">Add</button>
     </form>
-
 </div>
-
-<footer class="blog-footer">
-    <p class="mt-5 mb-3 text-muted" style="text-align:center">&copy; 2023 </p>
-</footer>
+<footer th:insert="blocks/footer::footer"></footer>
 </body>
