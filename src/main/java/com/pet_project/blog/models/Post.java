@@ -13,7 +13,7 @@ public class Post {
     private Long id;
 
     private String title, anons, full_text;
-    private int views;
+    private int views = 0;
 
     public Long getId() {
         return id;
@@ -62,5 +62,9 @@ public class Post {
         this.title = title;
         this.anons = anons;
         this.full_text = full_text;
+    }
+
+    public void incrementViews() {
+        views++;
     }
 }
