@@ -1,7 +1,9 @@
 package com.pet_project.blog.controllers;
 
 import com.pet_project.blog.models.Post;
+import com.pet_project.blog.models.User;
 import com.pet_project.blog.repositories.PostRepository;
+import com.pet_project.blog.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,9 @@ public class BlogControllers {
 
     @Autowired
     private PostRepository postRepository; // залежність
+    @Autowired
+    private UserRepository userRepository; // залежність
+
 
     @GetMapping("/blog")
     public String blogMain(Model model) {
@@ -86,11 +91,29 @@ public class BlogControllers {
         Optional<Post> post = postRepository.findById(id);
         if (post.isPresent()) {
             Post currentPost = post.get();
-            currentPost.setViews(currentPost.getViews()+1);
-           // currentPost.incrementViews();
+            currentPost.setViews(currentPost.getViews() + 1);
+            // currentPost.incrementViews();
             postRepository.save(currentPost);
             model.addAttribute("post", currentPost);
         }
         return "blog-details";
+    }
+
+    @GetMapping("/home")
+    public String login(Model model) {
+        model.addAttribute("user", new User());
+        return "home";
+    }
+
+
+    @PostMapping("/home")
+    public String doLogin(@ModelAttribute("user") User user) {
+        User foundUser = userRepository.findByLogin(user.getLogin());
+
+        if (foundUser != null && foundUser.getPassword() == (user.getPassword())) { // або equals замість ==
+            return "blog-main";
+        } else {
+            return "redirect:/login?error";
+        }
     }
 }
